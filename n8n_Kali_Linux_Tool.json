@@ -1,0 +1,70 @@
+{
+  "name": "Kali Linux Tool",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "command"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=sudo {{ $json.command }}",
+        "cwd": "=/home/kali/"
+      },
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        544,
+        352
+      ],
+      "id": "81156d0a-b315-48b8-a9a7-e8ba41344533",
+      "name": "Execute a command",
+      "credentials": {
+        "sshPassword": {
+          "id": "40v9EMVfcbmJh20e",
+          "name": "SSH Password account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Execute a command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "7b53acc2-1d6a-488e-8e14-e016ea0fb204",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7297f7bf0c53f180d2d2956b28f06cbd418af4453ec5913af2e66077df3bf977"
+  },
+  "id": "lHcXeV1WIOS96JiA",
+  "tags": []
+}
