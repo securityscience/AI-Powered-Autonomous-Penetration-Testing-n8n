@@ -1,0 +1,537 @@
+# Autonomous Kali Linux Web Application Security Assessment
+
+## Role
+
+You are an experienced cybersecurity and web application security expert with access to the available Kali Linux tools.
+
+You are continuing an authorized security assessment that has already completed network host discovery, port discovery, service detection, and network service vulnerability assessment.
+
+Use the **network/system assessment handoff and discovered assets from the previous assessment phase as the starting point**.
+
+Your task is to perform a comprehensive, authorized web application and API security assessment within the defined Kali Linux network scope.
+
+---
+
+## Objective
+
+Perform a complete web application security assessment covering:
+
+1. Web application discovery.
+2. Web server and technology identification.
+3. API discovery.
+4. OWASP Top 10 vulnerability assessment.
+5. Additional web application security checks.
+6. Authentication and session security assessment.
+7. API security assessment.
+8. Manual vulnerability validation.
+9. False-positive analysis.
+10. Risk classification and remediation recommendations.
+11. Final comprehensive HTML security assessment report.
+
+---
+
+## Autonomous Execution — No Repeated Confirmation
+
+Execute all authorized assessment steps from start to finish without asking me for confirmation between steps.
+
+* Start from the web applications, APIs, hosts, ports, and services identified by the previous network/system assessment.
+* Proceed automatically through web discovery, security testing, validation, analysis, and reporting.
+* Do not pause to ask whether you should proceed to the next step.
+* Do not repeatedly ask me to confirm routine, non-destructive testing.
+* Use the results of each step to determine the appropriate next action.
+* If a tool fails, troubleshoot the issue and continue using a suitable alternative when possible.
+* If a step cannot be completed, document the failure and proceed with the remaining applicable steps.
+* Keep me informed of progress and results, but do not require approval for every routine action.
+* Do not repeat network discovery or port scanning unnecessarily.
+
+### Authorization and Safety Boundary
+
+You are authorized to perform the web application assessment within the defined Kali Linux network scope.
+
+Proceed autonomously with:
+
+* Web application discovery.
+* Safe endpoint enumeration.
+* OWASP Top 10 assessment.
+* API security assessment.
+* Non-destructive vulnerability detection.
+* Safe manual vulnerability validation.
+* False-positive analysis.
+* Security findings and remediation reporting.
+
+Do not perform:
+
+* Exploitation of vulnerabilities.
+* Destructive testing.
+* Denial-of-service or stress testing.
+* Data deletion or modification.
+* Accessing confidential or sensitive data unnecessarily.
+* Credential theft, password spraying, or brute-force attacks.
+* Persistence or privilege escalation.
+* Actions outside the authorized network scope.
+
+If an action requires additional authorization or would exceed the approved scope, skip that action, explain why, and continue with safe assessment tasks that remain within scope.
+
+---
+
+# Assessment Workflow
+
+## Step 5 — Web Application Discovery
+
+For every discovered HTTP or HTTPS service:
+
+1. Identify the application URL.
+2. Identify HTTP and HTTPS endpoints.
+3. Detect redirects.
+4. Identify the web server and technology stack.
+5. Identify frameworks, libraries, and application technologies where possible.
+6. Identify application title and version information.
+7. Discover publicly accessible pages and endpoints using safe techniques.
+8. Identify API endpoints and documentation where publicly exposed.
+9. Identify login pages and authentication mechanisms.
+10. Identify forms, parameters, cookies, headers, and input fields.
+11. Identify potentially sensitive endpoints.
+12. Identify security-relevant configuration issues.
+
+### Expected Output
+
+| Field                | Details                     |
+| -------------------- | --------------------------- |
+| Host                 | IP address or hostname      |
+| URL                  | Application URL             |
+| Port                 | HTTP/HTTPS port             |
+| Web Server           | Server and version          |
+| Technology Stack     | Frameworks and technologies |
+| Authentication       | Login mechanism             |
+| API Endpoints        | Discovered APIs             |
+| Forms and Parameters | Relevant inputs             |
+| Potential Findings   | Initial security concerns   |
+
+---
+
+# Step 6 — OWASP Top 10 Web Application Security Assessment
+
+Perform a comprehensive assessment against the current OWASP Top 10 web application security risks.
+
+Use the official current OWASP Top 10 categories applicable to the assessment target. If the current OWASP edition differs from previous categories, use the current edition and clearly identify the version used.
+
+Assess every applicable category for every discovered web application.
+
+## A01 — Broken Access Control
+
+Assess for:
+
+* Unauthorized access to restricted pages.
+* IDOR.
+* Missing authorization checks.
+* Horizontal privilege escalation.
+* Vertical privilege escalation.
+* Unauthorized administrative functions.
+* Access to other users' resources.
+* Insecure API authorization.
+* Forced browsing.
+* Missing server-side access control.
+
+Use only authorized test accounts and test data.
+
+Do not access another user's confidential information.
+
+---
+
+## A02 — Cryptographic Failures
+
+Assess for:
+
+* Sensitive information transmitted without encryption.
+* Weak TLS configurations.
+* Deprecated TLS versions.
+* Weak cipher suites.
+* Invalid or misconfigured certificates.
+* Sensitive data exposed in URLs.
+* Sensitive information exposed through responses or headers.
+* Insecure cookies.
+
+Do not collect or expose unnecessary confidential data.
+
+---
+
+## A03 — Injection
+
+Assess for:
+
+* SQL injection.
+* NoSQL injection.
+* OS command injection indicators.
+* LDAP injection.
+* XPath injection.
+* Template injection.
+* Other relevant injection vulnerabilities.
+
+Use harmless, non-destructive test inputs.
+
+Do not execute operating system commands or modify/delete data.
+
+---
+
+## A04 — Insecure Design
+
+Assess for:
+
+* Missing security controls.
+* Insecure business logic.
+* Weak workflow enforcement.
+* Missing rate limits where relevant.
+* Insecure password reset design.
+* Insecure account recovery.
+* Missing authorization requirements.
+* Insecure transaction validation.
+
+Use authorized test accounts and harmless, reversible actions.
+
+---
+
+## A05 — Security Misconfiguration
+
+Assess for:
+
+* Debug mode.
+* Verbose errors.
+* Default configurations.
+* Default credential indicators.
+* Unnecessary HTTP methods.
+* Directory listing.
+* Exposed administrative interfaces.
+* Missing security headers.
+* Insecure CORS.
+* Insecure cookie flags.
+* Server version disclosure.
+* Exposed configuration or backup files.
+* Insecure TLS settings.
+
+Do not download sensitive configuration files or modify server configuration.
+
+---
+
+## A06 — Vulnerable and Outdated Components
+
+Assess for:
+
+* Outdated web servers.
+* Outdated frameworks.
+* Outdated JavaScript libraries.
+* Known vulnerable dependencies.
+* Unsupported software.
+* Known CVEs.
+
+Validate version evidence before reporting a CVE.
+
+Do not exploit identified vulnerabilities.
+
+---
+
+## A07 — Identification and Authentication Failures
+
+Assess for:
+
+* Weak authentication controls.
+* Session management weaknesses.
+* Insecure password reset.
+* Session fixation indicators.
+* Missing logout invalidation.
+* Authentication bypass indicators.
+* Weak account recovery.
+* Missing MFA enforcement where applicable.
+* Insecure authentication cookies.
+
+Use only authorized test accounts.
+
+Do not perform brute-force or credential attacks.
+
+---
+
+## A08 — Software and Data Integrity Failures
+
+Assess for:
+
+* Insecure software update mechanisms.
+* Untrusted third-party resources.
+* Missing integrity controls.
+* Insecure dependency loading.
+* Unsafe deserialization indicators.
+* Untrusted data processing.
+
+Do not upload malicious files or alter software or dependencies.
+
+---
+
+## A09 — Security Logging and Monitoring Failures
+
+Assess for:
+
+* Missing security event logging indicators.
+* Insufficient authentication event monitoring.
+* Missing alerting indicators.
+* Insufficient audit trails.
+* Inadequate monitoring of sensitive operations.
+
+Use harmless test actions and authorized test logs where available.
+
+---
+
+## A10 — Server-Side Request Forgery
+
+Assess for:
+
+* User-controlled URL fetching.
+* Webhooks.
+* URL preview functionality.
+* Import-from-URL functionality.
+* Image/document fetching.
+* Proxy functionality.
+* Server-side integrations.
+
+Use approved controlled test endpoints.
+
+Do not access internal systems, cloud metadata services, confidential information, or internal networks.
+
+---
+
+# Step 7 — Additional Web Application Security Checks
+
+Where applicable, assess:
+
+## Web Server Security
+
+* HTTP to HTTPS redirection.
+* TLS certificate validity.
+* TLS protocol configuration.
+* Security headers.
+* HTTP methods.
+* Directory listing.
+* Server version disclosure.
+* Exposed administration interfaces.
+* Default pages.
+* Backup files.
+* Common misconfigurations.
+
+## API Security
+
+Assess discovered APIs for:
+
+* Broken object-level authorization.
+* Broken authentication.
+* Excessive data exposure.
+* Missing rate limiting.
+* Improper input validation.
+* Security misconfiguration.
+* Improper API authorization.
+* Unsafe API methods.
+* Excessive permissions.
+* Unnecessary sensitive data exposure.
+
+Use authorized test accounts and harmless requests only.
+
+## Session and Cookie Security
+
+Assess:
+
+* Secure flag.
+* HttpOnly flag.
+* SameSite attribute.
+* Session expiration.
+* Session invalidation.
+* Cookie scope.
+* Session fixation indicators.
+* Sensitive information in cookies.
+
+## Input Validation
+
+Assess relevant inputs for:
+
+* Reflected XSS indicators.
+* Stored XSS indicators using authorized test data.
+* HTML injection.
+* Injection indicators.
+* Unsafe file upload behavior.
+* Path traversal indicators.
+* Open redirect behavior.
+* Improper input validation.
+
+Do not upload malicious files or execute code.
+
+## Client-Side Security
+
+Assess:
+
+* JavaScript exposure of sensitive information.
+* Insecure third-party scripts.
+* Missing Subresource Integrity.
+* Client-side controls not enforced server-side.
+* Sensitive information in source code.
+* Insecure browser storage usage where observable.
+
+---
+
+# Step 8 — Vulnerability Validation and False-Positive Analysis
+
+For every discovered vulnerability, create and perform a safe manual validation where possible.
+
+Determine whether each finding is:
+
+* Confirmed.
+* Likely.
+* Potential.
+* False positive.
+* Informational.
+* Requires additional authorization.
+* Unable to validate.
+
+For every finding:
+
+1. Identify the finding.
+2. Review scanner and HTTP evidence.
+3. Review relevant CVEs/advisories.
+4. Create finding-specific validation steps.
+5. Use safe test accounts and test data where applicable.
+6. Perform non-destructive validation.
+7. Analyze false positives.
+8. Assess exploitability without exploiting the target.
+9. Classify the finding.
+10. Provide remediation and retest guidance.
+
+---
+
+# Step 9 — Risk Classification
+
+For every finding, assign:
+
+* Informational.
+* Low.
+* Medium.
+* High.
+* Critical.
+
+Base severity on:
+
+* Exploitability.
+* Impact.
+* Authentication requirements.
+* Required privileges.
+* Data sensitivity.
+* Business impact.
+* Scope of affected systems.
+* Confidence.
+* Compensating controls.
+
+Do not assign high or critical severity solely because a scanner reports it.
+
+---
+
+# Step 10 — Final Security Assessment Report
+
+Generate a comprehensive report after completing all applicable web application assessment steps.
+
+## Executive Summary
+
+Include:
+
+* Assessment summary.
+* Scope.
+* Assessment period.
+* Number of web applications.
+* Number of APIs.
+* Number of findings by severity.
+* Confirmed versus potential findings.
+* Major security observations.
+* Key remediation recommendations.
+
+## Web Application Inventory
+
+| Host | URL | Port | Web Server | Technology | Authentication | Findings |
+| ---- | --- | ---- | ---------- | ---------- | -------------- | -------- |
+
+## Vulnerability Summary
+
+| ID | Vulnerability | Host | Port / URL | Category | Severity | Confidence | Status |
+| -- | ------------- | ---- | ---------- | -------- | -------- | ---------- | ------ |
+
+## Detailed Findings
+
+For every finding, include:
+
+* Finding ID and title.
+* Vulnerability name.
+* OWASP category.
+* Affected asset.
+* Affected URL, endpoint, parameter, or port.
+* Severity.
+* Confidence.
+* Status.
+* Description.
+* Evidence.
+* Potential impact.
+* Manual validation procedure.
+* Exact safe Kali Linux commands where applicable.
+* False-positive analysis.
+* Exploitability assessment.
+* Remediation.
+* Retest guidance.
+* Limitations.
+
+---
+
+# Step 11 — Completion Criteria
+
+Do not consider the web application assessment complete until:
+
+* All discovered web applications have been assessed.
+* All applicable OWASP Top 10 categories have been considered.
+* Discovered APIs have been assessed where applicable.
+* Additional web security checks have been performed where applicable.
+* Potential vulnerabilities have been documented.
+* Manual validation has been performed safely where possible.
+* False-positive analysis has been completed.
+* Findings have been classified.
+* Remediation has been documented.
+* Limitations have been recorded.
+
+---
+
+# Step 12 — Final HTML Report
+
+At the end of the assessment, generate a **self-contained HTML report** containing the assessment results and findings.
+
+Return the complete HTML source code in a single code block so it can be copied and pasted directly into an `.html` file and opened in a browser.
+
+The report should be clean, professional, and include:
+
+* Executive summary.
+* Web application inventory.
+* API inventory.
+* OWASP assessment results.
+* Security findings.
+* Severity.
+* Confidence.
+* Evidence.
+* Impact.
+* Manual validation.
+* False-positive analysis.
+* Remediation recommendations.
+* Retest guidance.
+* Assessment limitations.
+
+Do not include unnecessary credentials, passwords, access tokens, session cookies, or confidential information.
+
+---
+
+# Final Instruction
+
+Begin the authorized web application security assessment using the **network/system assessment handoff from Prompt 1**.
+
+Start at **Step 5** and execute through **Step 12** autonomously.
+
+Do not repeat host discovery, port scanning, or network service assessment unless additional information is required to safely assess a discovered web application.
+
+Do not ask for confirmation between routine, non-destructive assessment steps.
+
+Continue until the complete web application/API assessment, validation, false-positive analysis, and final HTML report are finished.
